@@ -21,6 +21,7 @@
 
         <!-- Our versions -->
         <prospector.version>1.0.0-SNAPSHOT</prospector.version>
+        <foreman.version>2.12.0-SNAPSHOT</foreman.version>
 
         <commons-collections.version>4.2</commons-collections.version>
         <commons-io.version>2.6</commons-io.version>
@@ -37,12 +38,43 @@
     </properties>
 
     <modules>
+        <module>prospector-antminer</module>
         <module>prospector-model</module>
+        <module>prospector-prospect</module>
         <module>prospector-scan</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Our libraries -->
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-asic</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-model</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-prospect</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-scan</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+
+            <!-- Foreman -->
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>foreman-cgminer</artifactId>
+                <version>${foreman.version}</version>
+            </dependency>
+
             <!-- Util -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -145,7 +177,8 @@
                                 </addDefaultSpecificationEntries>
                             </manifest>
                             <manifestEntries>
-                                <Built-By>${project.organization.name}</Built-By>
+                                <Built-By>${project.organization.name}
+                                </Built-By>
                                 <Build-Jdk>${java.version}</Build-Jdk>
                             </manifestEntries>
                         </archive>

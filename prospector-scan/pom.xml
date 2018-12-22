@@ -18,6 +18,15 @@
 
     <dependencies>
         <dependency>
+            <groupId>mn.foreman</groupId>
+            <artifactId>prospector-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mn.foreman</groupId>
+            <artifactId>prospector-prospect</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
