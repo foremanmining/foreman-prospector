@@ -36,6 +36,11 @@
         <surefire.version>2.20.1</surefire.version>
     </properties>
 
+    <modules>
+        <module>prospector-model</module>
+        <module>prospector-scan</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
             <!-- Util -->
