@@ -52,7 +52,7 @@ public class TargetedScanningStrategy
      *
      * @param prospector The {@link Prospector}.
      */
-    TargetedScanningStrategy(final Prospector prospector) {
+    public TargetedScanningStrategy(final Prospector prospector) {
         Validate.notNull(
                 prospector,
                 "prospector cannot be null");

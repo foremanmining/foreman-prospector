@@ -41,9 +41,11 @@
 
     <modules>
         <module>prospector-antminer</module>
+        <module>prospector-app</module>
         <module>prospector-baikal</module>
         <module>prospector-dayun</module>
         <module>prospector-dragonmint</module>
+        <module>prospector-menu</module>
         <module>prospector-model</module>
         <module>prospector-prospect</module>
         <module>prospector-scan</module>
@@ -55,7 +57,12 @@
             <!-- Our libraries -->
             <dependency>
                 <groupId>mn.foreman</groupId>
-                <artifactId>prospector-asic</artifactId>
+                <artifactId>prospector-antminer</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-menu</artifactId>
                 <version>${prospector.version}</version>
             </dependency>
             <dependency>
@@ -224,7 +231,8 @@
                                 </addDefaultSpecificationEntries>
                             </manifest>
                             <manifestEntries>
-                                <Built-By>${project.organization.name}
+                                <Built-By>
+                                    ${project.organization.name}
                                 </Built-By>
                                 <Build-Jdk>${java.version}</Build-Jdk>
                             </manifestEntries>
