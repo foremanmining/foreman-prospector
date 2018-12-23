@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Optional;
 
 /**
- * An {@link DragonmintProspector} provides a {@link Prospector} implementation
+ * A {@link DragonmintProspector} provides a {@link Prospector} implementation
  * that will query the provided IP and port, determining the Dragonmint model
  * that's present if a response is returned.
  */

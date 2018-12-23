@@ -7,6 +7,7 @@ import mn.foreman.util.http.HttpHandler;
 
 import com.google.common.collect.ImmutableMap;
 
+/** Verifies that a DragonMint T1 can be queried and found. */
 public class DragonmintT1ITest
         extends AbstractProspectorTest {
 

@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * An {@link BaikalProspector} provides a {@link Prospector} implementation that
+ * A {@link BaikalProspector} provides a {@link Prospector} implementation that
  * will query the provided IP and port, determining the Baikal model that's
  * present if a response is returned.
  *

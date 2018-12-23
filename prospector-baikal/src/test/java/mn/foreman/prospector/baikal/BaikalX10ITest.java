@@ -7,7 +7,7 @@ import mn.foreman.util.rpc.RpcHandler;
 
 import com.google.common.collect.ImmutableMap;
 
-/** Verifies that an Antminer B3 can be queried and found. */
+/** Verifies that a Baikal X10 can be queried and found. */
 public class BaikalX10ITest
         extends AbstractProspectorTest {
 
