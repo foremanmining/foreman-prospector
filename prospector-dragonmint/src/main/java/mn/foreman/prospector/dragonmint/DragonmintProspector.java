@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A {@link DragonmintProspector} provides a {@link Prospector} implementation
@@ -58,7 +59,9 @@ public class DragonmintProspector
                             this.username,
                             this.password,
                             new TypeReference<Summary>() {
-                            });
+                            },
+                            1,
+                            TimeUnit.SECONDS);
 
             DragonmintType dragonmintType = DragonmintType.UNKNOWN;
             if (!summary.devs.isEmpty()) {

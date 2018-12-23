@@ -62,6 +62,21 @@
             </dependency>
             <dependency>
                 <groupId>mn.foreman</groupId>
+                <artifactId>prospector-baikal</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-dayun</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-dragonmint</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
                 <artifactId>prospector-menu</artifactId>
                 <version>${prospector.version}</version>
             </dependency>

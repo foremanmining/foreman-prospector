@@ -68,7 +68,7 @@ public class TargetedScanningStrategy
                 "subnetPattern must be of the form xxx.yyy.zzz");
 
         final List<Miner> miners = new LinkedList<>();
-        for (int i = 0; i < 255; i++) {
+        for (int i = 0; i <= 255; i++) {
             final String ipAddress =
                     String.format(
                             "%s.%d",

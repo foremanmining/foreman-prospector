@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * An {@link AntminerProspector} provides a {@link Prospector} implementation
@@ -41,6 +42,9 @@ public class AntminerProspector
                     new CgMiner.Builder()
                             .setApiIp(ipAddress)
                             .setApiPort(Integer.toString(apiPort))
+                            .setConnectTimeout(
+                                    1,
+                                    TimeUnit.SECONDS)
                             .addRequest(
                                     new CgMinerRequest.Builder()
                                             .setCommand(CgMinerCommand.VERSION)

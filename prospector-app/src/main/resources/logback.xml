@@ -1,0 +1,19 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="io.netty" level="OFF"/>
+    <logger name="mn.foreman.cgminer" level="OFF"/>
+    <logger name="mn.foreman.io" level="OFF"/>
+    <logger name="mn.foreman.model" level="OFF"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

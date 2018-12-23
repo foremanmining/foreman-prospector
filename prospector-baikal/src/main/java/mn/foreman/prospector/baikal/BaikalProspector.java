@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A {@link BaikalProspector} provides a {@link Prospector} implementation that
@@ -51,6 +52,9 @@ public class BaikalProspector
                     new CgMiner.Builder()
                             .setApiIp(ipAddress)
                             .setApiPort(Integer.toString(apiPort))
+                            .setConnectTimeout(
+                                    1,
+                                    TimeUnit.SECONDS)
                             .addRequest(
                                     new CgMinerRequest.Builder()
                                             .setCommand(CgMinerCommand.DEVS)
