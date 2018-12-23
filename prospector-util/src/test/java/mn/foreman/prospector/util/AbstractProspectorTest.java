@@ -11,6 +11,10 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * An {@link AbstractProspectorTest} provides n testing framework for validating
+ * {@link Prospector Prospectors} against canned miner responses.
+ */
 public abstract class AbstractProspectorTest {
 
     /** The {@link Miner} that should be found. */
