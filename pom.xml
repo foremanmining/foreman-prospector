@@ -26,7 +26,9 @@
         <commons-collections.version>4.2</commons-collections.version>
         <commons-io.version>2.6</commons-io.version>
         <commons-lang.version>3.7</commons-lang.version>
+        <easymock.version>3.5.1</easymock.version>
         <jackson.version>2.9.5</jackson.version>
+        <junit.version>4.12</junit.version>
         <logback.version>1.2.3</logback.version>
         <slf.version>1.7.25</slf.version>
 
@@ -42,6 +44,7 @@
         <module>prospector-model</module>
         <module>prospector-prospect</module>
         <module>prospector-scan</module>
+        <module>prospector-util</module>
     </modules>
 
     <dependencyManagement>
@@ -67,12 +70,29 @@
                 <artifactId>prospector-scan</artifactId>
                 <version>${prospector.version}</version>
             </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-util</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-util</artifactId>
+                <version>${prospector.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
 
             <!-- Foreman -->
             <dependency>
                 <groupId>mn.foreman</groupId>
                 <artifactId>foreman-cgminer</artifactId>
                 <version>${foreman.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>foreman-util</artifactId>
+                <version>${foreman.version}</version>
+                <classifier>tests</classifier>
             </dependency>
 
             <!-- Util -->
@@ -124,6 +144,20 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
+            </dependency>
+
+            <!-- Testing -->
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>${easymock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

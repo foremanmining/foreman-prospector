@@ -2,9 +2,8 @@ package mn.foreman.prospector.antminer;
 
 import mn.foreman.prospector.model.MinerType;
 
-import java.util.NavigableMap;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * An {@link AntminerType} provides a {@link MinerType} implementation that
@@ -56,8 +55,8 @@ public enum AntminerType
     UNKNOWN("Unknown");
 
     /** All of the types, by string, mapped to their type. */
-    private static final NavigableMap<String, AntminerType> TYPE_MAP =
-            new TreeMap<>();
+    private static final Map<String, AntminerType> TYPE_MAP =
+            new ConcurrentHashMap<>();
 
     static {
         for (final AntminerType asicType : values()) {
@@ -85,10 +84,13 @@ public enum AntminerType
      * @return The corresponding {@link AntminerType}.
      */
     public static AntminerType forModel(final String model) {
-        final SortedMap<String, AntminerType> types =
-                TYPE_MAP.subMap(model, model + Character.MAX_VALUE);
-        if (!types.isEmpty()) {
-            return types.get(types.firstKey());
+        if (model != null && !model.isEmpty()) {
+            return TYPE_MAP.entrySet()
+                    .stream()
+                    .filter(entry -> model.startsWith(entry.getKey()))
+                    .map(Map.Entry::getValue)
+                    .findFirst()
+                    .orElse(UNKNOWN);
         }
         return UNKNOWN;
     }
