@@ -4,6 +4,10 @@ import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * A {@link MinerImpl} provides a {@link Miner} implementation representing a
  * miner in Foreman.
@@ -22,6 +26,9 @@ public class MinerImpl
 
     /** The miner name. */
     private final String name;
+
+    /** The custom parameters. */
+    private final Map<String, String> parameters;
 
     /**
      * Constructor.
@@ -48,6 +55,7 @@ public class MinerImpl
         this.ipAddress = builder.ipAddress;
         this.minerType = builder.minerType;
         this.name = builder.name;
+        this.parameters = builder.parameters;
     }
 
     @Override
@@ -63,6 +71,7 @@ public class MinerImpl
                             .append(this.ipAddress, otherImpl.ipAddress)
                             .append(this.minerType, otherImpl.minerType)
                             .append(this.name, otherImpl.name)
+                            .append(this.parameters, otherImpl.parameters)
                             .isEquals();
         }
         return isEqual;
@@ -89,6 +98,11 @@ public class MinerImpl
     }
 
     @Override
+    public Map<String, String> getParameters() {
+        return Collections.unmodifiableMap(this.parameters);
+    }
+
+    @Override
     public int hashCode() {
         return new HashCodeBuilder()
                 .append(this.apiPort)
@@ -105,17 +119,22 @@ public class MinerImpl
                         "apiPort=%d, " +
                         "ipAddress=%s, " +
                         "minerType=%s, " +
-                        "name=%s " +
+                        "name=%s," +
+                        "parameters=%s " +
                         " ]",
                 getClass().getSimpleName(),
                 this.apiPort,
                 this.ipAddress,
                 this.minerType,
-                this.name);
+                this.name,
+                this.parameters);
     }
 
     /** A builder for creating new {@link MinerImpl miners}. */
     public static class Builder {
+
+        /** The custom parameters. */
+        private final Map<String, String> parameters = new HashMap<>();
 
         /** The API port. */
         private int apiPort;
@@ -128,6 +147,21 @@ public class MinerImpl
 
         /** The miner name. */
         private String name;
+
+        /**
+         * Adds the provided parameter.
+         *
+         * @param key   The key.
+         * @param value The value.
+         *
+         * @return This builder instance.
+         */
+        public Builder addParameter(
+                final String key,
+                final String value) {
+            this.parameters.put(key, value);
+            return this;
+        }
 
         /**
          * Creates a new {@link Miner}.

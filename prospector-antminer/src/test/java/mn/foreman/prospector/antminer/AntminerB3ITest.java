@@ -15,11 +15,11 @@ public class AntminerB3ITest
     public AntminerB3ITest() {
         super(
                 "127.0.0.1",
-                42069,
-                42070,
+                4028,
+                4029,
                 new AntminerProspector(),
                 new FakeRpcMinerServer(
-                        42069,
+                        4028,
                         ImmutableMap.of(
                                 "{\"command\":\"version\"}",
                                 new RpcHandler(
@@ -28,7 +28,7 @@ public class AntminerB3ITest
                 new MinerImpl.Builder()
                         .setType(AntminerType.ANTMINER_B3)
                         .setIpAddress("127.0.0.1")
-                        .setApiPort(42069)
+                        .setApiPort(4028)
                         .build());
     }
 }

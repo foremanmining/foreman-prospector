@@ -41,6 +41,8 @@
 
     <modules>
         <module>prospector-antminer</module>
+        <module>prospector-baikal</module>
+        <module>prospector-dragonmint</module>
         <module>prospector-model</module>
         <module>prospector-prospect</module>
         <module>prospector-scan</module>
@@ -86,6 +88,11 @@
             <dependency>
                 <groupId>mn.foreman</groupId>
                 <artifactId>foreman-cgminer</artifactId>
+                <version>${foreman.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>foreman-dragonmint</artifactId>
                 <version>${foreman.version}</version>
             </dependency>
             <dependency>
