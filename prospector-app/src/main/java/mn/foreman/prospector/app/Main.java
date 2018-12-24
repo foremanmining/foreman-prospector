@@ -1,6 +1,7 @@
 package mn.foreman.prospector.app;
 
 import mn.foreman.prospector.antminer.AntminerProspector;
+import mn.foreman.prospector.avalon.AvalonProspector;
 import mn.foreman.prospector.baikal.BaikalProspector;
 import mn.foreman.prospector.dayun.DayunProspector;
 import mn.foreman.prospector.dragonmint.DragonmintProspector;
@@ -70,6 +71,13 @@ public class Main {
                                                 createMinerMenu(
                                                         "Antminer",
                                                         new AntminerProspector(),
+                                                        4028,
+                                                        scanner,
+                                                        miners))
+                                        .addMenuItem(
+                                                createMinerMenu(
+                                                        "Avalon",
+                                                        new AvalonProspector(),
                                                         4028,
                                                         scanner,
                                                         miners))

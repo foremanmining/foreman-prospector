@@ -119,7 +119,7 @@ public class MinerImpl
                         "apiPort=%d, " +
                         "ipAddress=%s, " +
                         "minerType=%s, " +
-                        "name=%s," +
+                        "name=%s, " +
                         "parameters=%s " +
                         " ]",
                 getClass().getSimpleName(),

@@ -41,6 +41,7 @@
 
     <modules>
         <module>prospector-antminer</module>
+        <module>prospector-avalon</module>
         <module>prospector-app</module>
         <module>prospector-baikal</module>
         <module>prospector-dayun</module>
@@ -58,6 +59,11 @@
             <dependency>
                 <groupId>mn.foreman</groupId>
                 <artifactId>prospector-antminer</artifactId>
+                <version>${prospector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-avalon</artifactId>
                 <version>${prospector.version}</version>
             </dependency>
             <dependency>

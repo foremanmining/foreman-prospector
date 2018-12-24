@@ -23,6 +23,10 @@
         </dependency>
         <dependency>
             <groupId>mn.foreman</groupId>
+            <artifactId>prospector-avalon</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mn.foreman</groupId>
             <artifactId>prospector-baikal</artifactId>
         </dependency>
         <dependency>

@@ -19,7 +19,7 @@ public enum DragonmintType
     DRAGONMINT_B52("DB52", "DragonMint B52"),
 
     /** An unknown type. */
-    UNKNOWN("", "Unknown");
+    UNKNOWN("Unknown", "Unknown");
 
     /** All of the types, by indicator, mapped to their type. */
     private static final Map<String, DragonmintType> TYPE_MAP =
