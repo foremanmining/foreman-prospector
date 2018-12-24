@@ -13,6 +13,7 @@ import mn.foreman.prospector.model.Miner;
 import mn.foreman.prospector.prospect.Prospector;
 import mn.foreman.prospector.scan.ScanningStrategy;
 import mn.foreman.prospector.scan.TargetedScanningStrategy;
+import mn.foreman.prospector.whatsminer.WhatsminerProspector;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
@@ -107,6 +108,13 @@ public class Main {
                                                 createDragonMintMenu(
                                                         scanner,
                                                         miners))
+                                        .addMenuItem(
+                                                createMinerMenu(
+                                                        "Whatsminer",
+                                                        new WhatsminerProspector(),
+                                                        4028,
+                                                        scanner,
+                                                        miners))
                                         .addMenuItem(toMainMenu)
                                         .addMenuItem(exit)
                                         .build())
@@ -136,9 +144,9 @@ public class Main {
                 .setDisplayText("DragonMint")
                 .setMenuAction(() -> {
                     System.out.println();
-                    System.out.print(">> Enter DragonMint API username (typically: admin): ");
+                    System.out.print(">> Enter DragonMint API username (typically 'admin'): ");
                     final String username = scanner.nextLine();
-                    System.out.print(">> Enter DragonMint API username (typically: dragonadmin): ");
+                    System.out.print(">> Enter DragonMint API password (typically 'dragonadmin'): ");
                     final String password = scanner.nextLine();
                     runScan(
                             80,

@@ -52,6 +52,7 @@
         <module>prospector-prospect</module>
         <module>prospector-scan</module>
         <module>prospector-util</module>
+        <module>prospector-whatsminer</module>
     </modules>
 
     <dependencyManagement>
@@ -117,6 +118,11 @@
                 <artifactId>prospector-util</artifactId>
                 <version>${prospector.version}</version>
                 <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-whatsminer</artifactId>
+                <version>${prospector.version}</version>
             </dependency>
 
             <!-- Foreman -->

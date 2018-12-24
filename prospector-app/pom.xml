@@ -49,6 +49,10 @@
             <groupId>mn.foreman</groupId>
             <artifactId>prospector-scan</artifactId>
         </dependency>
+        <dependency>
+            <groupId>mn.foreman</groupId>
+            <artifactId>prospector-whatsminer</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
