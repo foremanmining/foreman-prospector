@@ -63,25 +63,25 @@ public class DragonmintProspector
                             1,
                             TimeUnit.SECONDS);
 
-            DragonmintType dragonmintType = DragonmintType.UNKNOWN;
             if (!summary.devs.isEmpty()) {
-                dragonmintType =
+                final Optional<DragonmintType> type =
                         DragonmintType.forModel(
                                 summary.devs.get(0).name);
+                if (type.isPresent()) {
+                    miner =
+                            new MinerImpl.Builder()
+                                    .setIpAddress(ipAddress)
+                                    .setApiPort(apiPort)
+                                    .setType(type.get())
+                                    .addParameter(
+                                            "username",
+                                            this.username)
+                                    .addParameter(
+                                            "password",
+                                            this.password)
+                                    .build();
+                }
             }
-
-            miner =
-                    new MinerImpl.Builder()
-                            .setIpAddress(ipAddress)
-                            .setApiPort(apiPort)
-                            .setType(dragonmintType)
-                            .addParameter(
-                                    "username",
-                                    this.username)
-                            .addParameter(
-                                    "password",
-                                    this.password)
-                            .build();
         } catch (final MinerException me) {
             LOG.debug("No Dragonmint found on {}:{}", ipAddress, apiPort);
         }

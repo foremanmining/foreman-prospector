@@ -3,6 +3,7 @@ package mn.foreman.prospector.dragonmint;
 import mn.foreman.prospector.model.MinerType;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -16,10 +17,7 @@ public enum DragonmintType
     DRAGONMINT_T1("DT1", "DragonMint T1"),
 
     /** The Dragonmint B52. */
-    DRAGONMINT_B52("DB52", "DragonMint B52"),
-
-    /** An unknown type. */
-    UNKNOWN("Unknown", "Unknown");
+    DRAGONMINT_B52("DB52", "DragonMint B52");
 
     /** All of the types, by indicator, mapped to their type. */
     private static final Map<String, DragonmintType> TYPE_MAP =
@@ -57,16 +55,15 @@ public enum DragonmintType
      *
      * @return The corresponding {@link DragonmintType}.
      */
-    public static DragonmintType forModel(final String model) {
+    public static Optional<DragonmintType> forModel(final String model) {
         if (model != null && !model.isEmpty()) {
             return TYPE_MAP.entrySet()
                     .stream()
                     .filter(entry -> model.startsWith(entry.getKey()))
                     .map(Map.Entry::getValue)
-                    .findFirst()
-                    .orElse(UNKNOWN);
+                    .findFirst();
         }
-        return UNKNOWN;
+        return Optional.empty();
     }
 
     @Override
@@ -77,10 +74,5 @@ public enum DragonmintType
     @Override
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public boolean isKnown() {
-        return this != UNKNOWN;
     }
 }

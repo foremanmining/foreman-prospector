@@ -56,10 +56,5 @@ public class MinerImplTest {
         public String getName() {
             return "name";
         }
-
-        @Override
-        public boolean isKnown() {
-            return false;
-        }
     }
 }

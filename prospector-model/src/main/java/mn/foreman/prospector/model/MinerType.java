@@ -22,11 +22,4 @@ public interface MinerType {
      */
     @JsonValue
     String getName();
-
-    /**
-     * Returns whether or not the type is known.
-     *
-     * @return Whether or not the type is known.
-     */
-    boolean isKnown();
 }

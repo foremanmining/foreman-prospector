@@ -3,6 +3,7 @@ package mn.foreman.prospector.avalon;
 import mn.foreman.prospector.model.MinerType;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -28,10 +29,7 @@ public enum AvalonType
     AVALON_911("Ver[911", "AvalonMiner 911"),
 
     /** The Avalon 921. */
-    AVALON_921("Ver[921", "AvalonMiner 921"),
-
-    /** An unknown ASIC. */
-    UNKNOWN("Unknown", "Unknown");
+    AVALON_921("Ver[921", "AvalonMiner 921");
 
     /** All of the types, by string, mapped to their type. */
     private static final Map<String, AvalonType> TYPE_MAP =
@@ -69,16 +67,15 @@ public enum AvalonType
      *
      * @return The corresponding {@link AvalonType}.
      */
-    public static AvalonType forId(final String id) {
+    public static Optional<AvalonType> forId(final String id) {
         if (id != null && !id.isEmpty()) {
             return TYPE_MAP.entrySet()
                     .stream()
                     .filter(entry -> id.startsWith(entry.getKey()))
                     .map(Map.Entry::getValue)
-                    .findFirst()
-                    .orElse(UNKNOWN);
+                    .findFirst();
         }
-        return UNKNOWN;
+        return Optional.empty();
     }
 
     @Override
@@ -98,10 +95,5 @@ public enum AvalonType
     @Override
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public boolean isKnown() {
-        return this != UNKNOWN;
     }
 }

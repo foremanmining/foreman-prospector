@@ -1,4 +1,4 @@
-package mn.foreman.prospector.antminer;
+package mn.foreman.prospector.blackminer;
 
 import mn.foreman.cgminer.CgMiner;
 import mn.foreman.cgminer.request.CgMinerCommand;
@@ -19,16 +19,16 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
- * An {@link AntminerProspector} provides a {@link Prospector} implementation
- * that will query the provided IP and port, determining the Antminer model
+ * An {@link BlackminerProspector} provides a {@link Prospector} implementation
+ * that will query the provided IP and port, determining the Blackminer model
  * that's present if a response is returned.
  */
-public class AntminerProspector
+public class BlackminerProspector
         implements Prospector {
 
     /** The logger for this class. */
     private static final Logger LOG =
-            LoggerFactory.getLogger(AntminerProspector.class);
+            LoggerFactory.getLogger(BlackminerProspector.class);
 
     @Override
     public Optional<Miner> scan(
@@ -58,7 +58,7 @@ public class AntminerProspector
             // then we found something
             cgMiner.getStats();
 
-            final Optional<AntminerType> type =
+            final Optional<BlackminerType> type =
                     getModel(
                             responseValues);
             if (type.isPresent()) {
@@ -70,7 +70,7 @@ public class AntminerProspector
                                 .build();
             }
         } catch (final MinerException | EmptySiteException e) {
-            LOG.debug("No Antminer found on {}:{}", ipAddress, apiPort);
+            LOG.debug("No Blackminer found on {}:{}", ipAddress, apiPort);
         }
 
         return Optional.ofNullable(miner);
@@ -83,9 +83,9 @@ public class AntminerProspector
      *
      * @return The model.
      *
-     * @throws EmptySiteException on non-Antminer response.
+     * @throws EmptySiteException on non-Blackminer response.
      */
-    private static Optional<AntminerType> getModel(
+    private static Optional<BlackminerType> getModel(
             final Map<String, List<Map<String, String>>> values)
             throws EmptySiteException {
         final Map<String, String> versions =
@@ -98,6 +98,6 @@ public class AntminerProspector
                         .filter(map -> map.containsKey("Type"))
                         .findFirst()
                         .orElseThrow(EmptySiteException::new);
-        return AntminerType.forModel(versions.get("Type"));
+        return BlackminerType.forModel(versions.get("Type"));
     }
 }

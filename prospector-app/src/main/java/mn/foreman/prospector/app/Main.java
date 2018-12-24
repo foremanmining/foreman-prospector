@@ -3,6 +3,7 @@ package mn.foreman.prospector.app;
 import mn.foreman.prospector.antminer.AntminerProspector;
 import mn.foreman.prospector.avalon.AvalonProspector;
 import mn.foreman.prospector.baikal.BaikalProspector;
+import mn.foreman.prospector.blackminer.BlackminerProspector;
 import mn.foreman.prospector.dayun.DayunProspector;
 import mn.foreman.prospector.dragonmint.DragonmintProspector;
 import mn.foreman.prospector.menu.ActionableMenuItem;
@@ -85,6 +86,13 @@ public class Main {
                                                 createMinerMenu(
                                                         "Baikal",
                                                         new BaikalProspector(),
+                                                        4028,
+                                                        scanner,
+                                                        miners))
+                                        .addMenuItem(
+                                                createMinerMenu(
+                                                        "Blackminer",
+                                                        new BlackminerProspector(),
                                                         4028,
                                                         scanner,
                                                         miners))

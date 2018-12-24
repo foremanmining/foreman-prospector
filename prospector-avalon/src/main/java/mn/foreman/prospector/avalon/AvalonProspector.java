@@ -58,12 +58,17 @@ public class AvalonProspector
             // then we found something
             cgMiner.getStats();
 
-            miner =
-                    new MinerImpl.Builder()
-                            .setIpAddress(ipAddress)
-                            .setApiPort(apiPort)
-                            .setType(getModel(responseValues))
-                            .build();
+            final Optional<AvalonType> type =
+                    getModel(
+                            responseValues);
+            if (type.isPresent()) {
+                miner =
+                        new MinerImpl.Builder()
+                                .setIpAddress(ipAddress)
+                                .setApiPort(apiPort)
+                                .setType(type.get())
+                                .build();
+            }
         } catch (final MinerException | EmptySiteException e) {
             LOG.debug("No Avalon found on {}:{}", ipAddress, apiPort);
         }
@@ -80,7 +85,7 @@ public class AvalonProspector
      *
      * @throws EmptySiteException on non-Avalon response.
      */
-    private static AvalonType getModel(
+    private static Optional<AvalonType> getModel(
             final Map<String, List<Map<String, String>>> values)
             throws EmptySiteException {
         final Map<String, String> stats =

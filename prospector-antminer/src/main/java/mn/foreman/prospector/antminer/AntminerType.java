@@ -3,6 +3,7 @@ package mn.foreman.prospector.antminer;
 import mn.foreman.prospector.model.MinerType;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -49,10 +50,7 @@ public enum AntminerType
     ANTMINER_X3("Antminer X3"),
 
     /** The Antminer Z9. */
-    ANTMINER_Z9("Antminer Z9"),
-
-    /** An unknown ASIC. */
-    UNKNOWN("Unknown");
+    ANTMINER_Z9("Antminer Z9");
 
     /** All of the types, by string, mapped to their type. */
     private static final Map<String, AntminerType> TYPE_MAP =
@@ -83,16 +81,15 @@ public enum AntminerType
      *
      * @return The corresponding {@link AntminerType}.
      */
-    public static AntminerType forModel(final String model) {
+    public static Optional<AntminerType> forModel(final String model) {
         if (model != null && !model.isEmpty()) {
             return TYPE_MAP.entrySet()
                     .stream()
                     .filter(entry -> model.startsWith(entry.getKey()))
                     .map(Map.Entry::getValue)
-                    .findFirst()
-                    .orElse(UNKNOWN);
+                    .findFirst();
         }
-        return UNKNOWN;
+        return Optional.empty();
     }
 
     @Override
@@ -103,10 +100,5 @@ public enum AntminerType
     @Override
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public boolean isKnown() {
-        return this != UNKNOWN;
     }
 }

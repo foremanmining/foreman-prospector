@@ -33,9 +33,4 @@ public enum DayunType
     public String getName() {
         return this.name;
     }
-
-    @Override
-    public boolean isKnown() {
-        return true;
-    }
 }
