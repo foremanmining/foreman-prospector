@@ -13,6 +13,13 @@ public interface Miner {
     int getApiPort();
 
     /**
+     * Returns the category.
+     *
+     * @return The category.
+     */
+    String getCategory();
+
+    /**
      * Returns the IP address.
      *
      * @return The IP address.

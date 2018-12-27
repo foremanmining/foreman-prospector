@@ -50,7 +50,10 @@ public enum AntminerType
     ANTMINER_X3("Antminer X3"),
 
     /** The Antminer Z9. */
-    ANTMINER_Z9("Antminer Z9");
+    ANTMINER_Z9("Antminer Z9"),
+
+    /** The BraiinsOS Antminer S9. */
+    BRAIINS_S9("braiins-am1-s9", "Antminer S9");
 
     /** All of the types, by string, mapped to their type. */
     private static final Map<String, AntminerType> TYPE_MAP =
@@ -58,9 +61,12 @@ public enum AntminerType
 
     static {
         for (final AntminerType asicType : values()) {
-            TYPE_MAP.put(asicType.name, asicType);
+            TYPE_MAP.put(asicType.identifier, asicType);
         }
     }
+
+    /** The miner identifier. */
+    private final String identifier;
 
     /** The miner name. */
     private final String name;
@@ -68,10 +74,23 @@ public enum AntminerType
     /**
      * Constructor.
      *
+     * @param identifier The identifier.
+     * @param name       The miner name.
+     */
+    AntminerType(
+            final String identifier,
+            final String name) {
+        this.identifier = identifier;
+        this.name = name;
+    }
+
+    /**
+     * Constructor.
+     *
      * @param name The miner name.
      */
     AntminerType(final String name) {
-        this.name = name;
+        this(name, name);
     }
 
     /**
@@ -95,6 +114,15 @@ public enum AntminerType
     @Override
     public String getCategory() {
         return "ASIC";
+    }
+
+    /**
+     * Returns the identifier.
+     *
+     * @return The identifier.
+     */
+    public String getIdentifier() {
+        return identifier;
     }
 
     @Override

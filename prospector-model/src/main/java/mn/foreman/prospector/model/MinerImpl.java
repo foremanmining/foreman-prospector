@@ -83,6 +83,11 @@ public class MinerImpl
     }
 
     @Override
+    public String getCategory() {
+        return this.minerType.getCategory();
+    }
+
+    @Override
     public String getIpAddress() {
         return this.ipAddress;
     }
