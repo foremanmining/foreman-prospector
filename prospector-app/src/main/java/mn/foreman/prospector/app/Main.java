@@ -40,17 +40,17 @@ public class Main {
 
         final MenuItem toMainMenu =
                 new ActionableMenuItem.Builder()
-                        .setDisplayText("Return to main menu")
+                        .setTitle("Return to main menu")
                         .setMenuAction(() -> {
                             // Do nothing
                         })
                         .build();
         final MenuItem exit =
                 new Menu.Builder()
-                        .setDisplayText("Save/Exit")
+                        .setTitle("Save/Exit")
                         .addMenuItem(
                                 new ActionableMenuItem.Builder()
-                                        .setDisplayText("Save miners and exit")
+                                        .setTitle("Save miners and exit")
                                         .setMenuAction(() -> {
                                             saveMiners(miners);
                                             System.exit(0);
@@ -58,17 +58,18 @@ public class Main {
                                         .build())
                         .addMenuItem(
                                 new ActionableMenuItem.Builder()
-                                        .setDisplayText("Exit without saving")
+                                        .setTitle("Exit without saving")
                                         .setMenuAction(() -> System.exit(0))
                                         .build())
                         .build();
 
         final MenuItem menu =
                 new Menu.Builder()
-                        .setDisplayText("Prospector Main Menu")
+                        .setTitle("Prospector Main Menu")
+                        .setCaption(() -> toMinersCaption(miners))
                         .addMenuItem(
                                 new Menu.Builder()
-                                        .setDisplayText("Find ASICs")
+                                        .setTitle("Find ASICs")
                                         .addMenuItem(
                                                 createMinerMenu(
                                                         "Antminer",
@@ -141,7 +142,7 @@ public class Main {
             final Scanner scanner,
             final List<Miner> miners) {
         return new ActionableMenuItem.Builder()
-                .setDisplayText("DragonMint")
+                .setTitle("DragonMint")
                 .setMenuAction(() -> {
                     System.out.println();
                     System.out.print(">> Enter DragonMint API username (typically 'admin'): ");
@@ -178,7 +179,7 @@ public class Main {
             final Scanner scanner,
             final List<Miner> miners) {
         return new ActionableMenuItem.Builder()
-                .setDisplayText(title)
+                .setTitle(title)
                 .setMenuAction(() ->
                         runScan(
                                 defaultPort,
@@ -240,5 +241,22 @@ public class Main {
         } catch (final IOException jpe) {
             System.out.println("Failed to write miners to file: " + jpe);
         }
+    }
+
+    /**
+     * Creates the main menu caption based on the number of found {@link Miner
+     * miners}.
+     *
+     * @param miners The {@link Miner miners}.
+     *
+     * @return The caption.
+     */
+    private static String toMinersCaption(final List<Miner> miners) {
+        if (miners.size() > 0) {
+            return String.format(
+                    "You have %d miners ready to be saved!",
+                    miners.size());
+        }
+        return "Once you're done, you must 'Save' or else your miners will be lost!";
     }
 }

@@ -39,7 +39,11 @@ public class Menu
     @Override
     public void entered(final Scanner scanner) {
         System.out.println();
-        System.out.println(getDisplayText());
+        System.out.println(getTitle());
+        if (hasCaption()) {
+            System.out.println();
+            System.out.println(getCaption());
+        }
         System.out.println();
 
         for (int i = 0; i < this.menuItems.size(); i++) {
@@ -47,7 +51,7 @@ public class Menu
                     this.menuItems.get(i);
             printMenuItem(
                     i,
-                    menuItem.getDisplayText());
+                    menuItem.getTitle());
         }
 
         System.out.println();

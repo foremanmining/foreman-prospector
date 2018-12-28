@@ -2,6 +2,8 @@ package mn.foreman.prospector.menu;
 
 import org.apache.commons.lang3.Validate;
 
+import java.util.function.Supplier;
+
 /**
  * An {@link AbstractMenuItem} provides a common base class to all {@link
  * MenuItem MenuItems}.
@@ -9,8 +11,11 @@ import org.apache.commons.lang3.Validate;
 public abstract class AbstractMenuItem
         implements MenuItem {
 
-    /** The display text. */
-    private final String displayText;
+    /** The caption. */
+    private final Supplier<String> caption;
+
+    /** The title. */
+    private final String title;
 
     /**
      * Constructor.
@@ -18,24 +23,39 @@ public abstract class AbstractMenuItem
      * @param builder The reference builder.
      */
     AbstractMenuItem(
-            final AbstractBuilder builder) {
+            final AbstractBuilder<?, ?> builder) {
         Validate.notNull(
-                builder.displayText,
-                "displayText cannot be null");
+                builder.title,
+                "title cannot be null");
         Validate.notEmpty(
-                builder.displayText,
-                "displayText cannot be empty");
-        this.displayText = builder.displayText;
+                builder.title,
+                "title cannot be empty");
+        Validate.notNull(
+                builder.caption,
+                "caption cannot be null");
+        this.title = builder.title;
+        this.caption = builder.caption;
+    }
+
+    @Override
+    public String getCaption() {
+        return this.caption.get();
     }
 
     /**
-     * Returns the display text.
+     * Returns the title.
      *
-     * @return The display text.
+     * @return The title.
      */
     @Override
-    public String getDisplayText() {
-        return this.displayText;
+    public String getTitle() {
+        return this.title;
+    }
+
+    @Override
+    public boolean hasCaption() {
+        final String caption = this.caption.get();
+        return caption != null && !caption.isEmpty();
     }
 
     /**
@@ -49,8 +69,11 @@ public abstract class AbstractMenuItem
             T extends AbstractBuilder,
             V extends MenuItem> {
 
-        /** The display text. */
-        private String displayText;
+        /** The caption. */
+        private Supplier<String> caption = () -> "";
+
+        /** The title. */
+        private String title;
 
         /**
          * Builds the {@link MenuItem}.
@@ -67,15 +90,43 @@ public abstract class AbstractMenuItem
         public abstract T getThis();
 
         /**
-         * Sets the display text.
+         * Sets the caption.
          *
-         * @param displayText The display text.
+         * @param caption The caption.
          *
          * @return This builder instance.
          */
-        public T setDisplayText(final String displayText) {
-            if (displayText != null && !displayText.isEmpty()) {
-                this.displayText = displayText;
+        public T setCaption(final Supplier<String> caption) {
+            if (caption != null) {
+                this.caption = caption;
+            }
+            return getThis();
+        }
+
+        /**
+         * Sets the caption.
+         *
+         * @param caption The caption.
+         *
+         * @return This builder instance.
+         */
+        public T setCaption(final String caption) {
+            if (caption != null && !caption.isEmpty()) {
+                this.caption = () -> caption;
+            }
+            return getThis();
+        }
+
+        /**
+         * Sets the title.
+         *
+         * @param title The title.
+         *
+         * @return This builder instance.
+         */
+        public T setTitle(final String title) {
+            if (title != null && !title.isEmpty()) {
+                this.title = title;
             }
             return getThis();
         }

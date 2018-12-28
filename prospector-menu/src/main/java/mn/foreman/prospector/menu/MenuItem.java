@@ -24,9 +24,23 @@ public interface MenuItem {
             Scanner scanner);
 
     /**
+     * Returns the caption.
+     *
+     * @return The caption.
+     */
+    String getCaption();
+
+    /**
      * Returns the display text.
      *
      * @return The display text.
      */
-    String getDisplayText();
+    String getTitle();
+
+    /**
+     * Checks to see if the {@link MenuItem} has a caption.
+     *
+     * @return Whether or not there's a caption.
+     */
+    boolean hasCaption();
 }
