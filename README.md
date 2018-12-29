@@ -24,8 +24,8 @@ The following ASIC miners can be discovered by Prospector:
 
 #### How To Use ###
 
-If running on Windows, execute the `prospector.bat` script located in the `bin` folder.
-If running on Linux, execute the `prospector.sh` script located in the `bin` folder.
+If running on Windows, execute the `prospector.bat` script located in the `bin/` folder.  
+If running on Linux, execute the `prospector.sh` script located in the `bin/` folder.
 
 Select the type of device to discover, enter the subnet to query and API port, and your miners will be discovered.
 
