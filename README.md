@@ -1,16 +1,12 @@
 # foreman-prospector
 
-## Status ##
-
-[![Build Status](https://travis-ci.com/delawr0190/foreman-prospector.svg?branch=master)](https://travis-ci.com/delawr0190/foreman-prospector)
-
-### Prospector ###
+## Prospector ##
 
 Prospector is an open-source Java application that will query a user-provided subnet and find network accessible miners.  This application aims to facilitate the process of adding miners to Foreman for monitoring, and is intended to be used primarily for performing bulk imports.
 
 Prospector currently only supports querying ASIC devices.  It will, however, be expanded upon to include the discovery of rigs.
 
-#### Supported Devices ####
+### Supported Devices ###
 
 The following ASIC miners can be discovered by Prospector:
 
@@ -22,7 +18,7 @@ The following ASIC miners can be discovered by Prospector:
 * DragonMint
 * Whatsminer
 
-#### How To Use ###
+### How To Use ###
 
 If running on Windows, execute the `prospector.bat` script located in the `bin/` folder.  
 If running on Linux, execute the `prospector.sh` script located in the `bin/` folder.
@@ -51,12 +47,12 @@ Example of a `miners.json` that could be generated (discovered one Antminer S9 a
 } ]
 ```
 
-## Requirements ##
+### Requirements ###
 
 - JDK version 8 (or higher)
 - Apache Maven (only if building Prospector from sources)
 
-## Building ##
+### Building ###
 
 To build prospector, from the top level of the repository:
 
