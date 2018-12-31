@@ -7,7 +7,7 @@
     <groupId>mn.foreman</groupId>
     <artifactId>prospector-buildmaster</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.0.0</version>
 
     <name>prospector: buildmaster</name>
     <organization>
@@ -20,7 +20,7 @@
         <java.version>1.8</java.version>
 
         <!-- Our versions -->
-        <prospector.version>1.0.0-SNAPSHOT</prospector.version>
+        <prospector.version>1.0.0</prospector.version>
         <foreman.version>2.12.0-SNAPSHOT</foreman.version>
 
         <commons-collections.version>4.2</commons-collections.version>
