@@ -3,8 +3,9 @@ jdk:
   - oraclejdk8
   - openjdk8
 
-script:
-  - mvn verify --settings .travis.settings.xml
+install: mvn install --settings .travis.settings.xml -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+script: mvn verify --settings .travis.settings.xml
 
 deploy:
   provider: script
