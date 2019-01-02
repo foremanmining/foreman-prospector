@@ -1,5 +1,9 @@
 # foreman-prospector
 
+## Status ##
+
+[![Build Status](https://travis-ci.com/delawr0190/foreman-prospector.svg?branch=master)](https://travis-ci.com/delawr0190/foreman-prospector)
+
 ## Prospector ##
 
 Prospector is an open-source Java application that will query a user-provided subnet and find network accessible miners.  This application aims to facilitate the process of adding miners to Foreman for monitoring, and is intended to be used primarily for performing bulk imports.
