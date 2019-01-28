@@ -18,7 +18,7 @@ public class Avalon7XXITest
                 4028,
                 4029,
                 new AvalonProspector(),
-                new FakeRpcMinerServer(
+                () -> new FakeRpcMinerServer(
                         4028,
                         ImmutableMap.of(
                                 "{\"command\":\"stats\"}",

@@ -20,14 +20,14 @@ public abstract class AbstractProspectorTest {
     /** The {@link Miner} that should be found. */
     private final Miner expectedMiner;
 
-    /** The server. */
-    private final FakeMinerServer fakeMinerServer;
-
     /** The port to query that will find a {@link Miner}. */
     private final int foundPort;
 
     /** The IP to query. */
     private final String ipAddress;
+
+    /** The server factory. */
+    private final MinerServerFactory minerServerFactory;
 
     /** A port to query that will fail to find a {@link Miner}. */
     private final int notFoundPort;
@@ -38,26 +38,27 @@ public abstract class AbstractProspectorTest {
     /**
      * Constructor.
      *
-     * @param ipAddress       The IP address.
-     * @param foundPort       The port to query that will find a {@link Miner}.
-     * @param notFoundPort    The port to query that won't find a {@link
-     *                        Miner}.
-     * @param prospector      The {@link Prospector} under test.
-     * @param fakeMinerServer The server.
-     * @param expectedMiner   The {@link Miner} that should be found.
+     * @param ipAddress          The IP address.
+     * @param foundPort          The port to query that will find a {@link
+     *                           Miner}.
+     * @param notFoundPort       The port to query that won't find a {@link
+     *                           Miner}.
+     * @param prospector         The {@link Prospector} under test.
+     * @param minerServerFactory The factory.
+     * @param expectedMiner      The {@link Miner} that should be found.
      */
     public AbstractProspectorTest(
             final String ipAddress,
             final int foundPort,
             final int notFoundPort,
             final Prospector prospector,
-            final FakeMinerServer fakeMinerServer,
+            final MinerServerFactory minerServerFactory,
             final Miner expectedMiner) {
         this.ipAddress = ipAddress;
         this.foundPort = foundPort;
         this.notFoundPort = notFoundPort;
         this.prospector = prospector;
-        this.fakeMinerServer = fakeMinerServer;
+        this.minerServerFactory = minerServerFactory;
         this.expectedMiner = expectedMiner;
     }
 
@@ -86,8 +87,9 @@ public abstract class AbstractProspectorTest {
     private void runTest(
             final int port,
             final Miner expectedMiner) throws Exception {
-        try {
-            this.fakeMinerServer.start();
+        try (final FakeMinerServer fakeMinerServer =
+                     this.minerServerFactory.create()) {
+            fakeMinerServer.start();
             assertEquals(
                     expectedMiner,
                     this.prospector.scan(
@@ -95,12 +97,10 @@ public abstract class AbstractProspectorTest {
                             port).orElse(null));
             if (expectedMiner != null) {
                 assertTrue(
-                        this.fakeMinerServer.waitTillDone(
+                        fakeMinerServer.waitTillDone(
                                 10,
                                 TimeUnit.SECONDS));
             }
-        } finally {
-            this.fakeMinerServer.close();
         }
     }
 }

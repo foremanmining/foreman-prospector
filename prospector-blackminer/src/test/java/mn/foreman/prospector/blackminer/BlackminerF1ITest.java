@@ -18,7 +18,7 @@ public class BlackminerF1ITest
                 4028,
                 4029,
                 new BlackminerProspector(),
-                new FakeRpcMinerServer(
+                () -> new FakeRpcMinerServer(
                         4028,
                         ImmutableMap.of(
                                 "{\"command\":\"version\"}",

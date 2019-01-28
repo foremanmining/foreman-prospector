@@ -18,7 +18,7 @@ public class AntminerZ9MiniITest
                 4028,
                 4029,
                 new AntminerProspector(),
-                new FakeRpcMinerServer(
+                () -> new FakeRpcMinerServer(
                         4028,
                         ImmutableMap.of(
                                 "{\"command\":\"version\"}",

@@ -20,7 +20,7 @@ public class DragonmintT1ITest
                 new DragonmintProspector(
                         "username",
                         "password"),
-                new FakeHttpMinerServer(
+                () -> new FakeHttpMinerServer(
                         8888,
                         ImmutableMap.of(
                                 "/api/summary",

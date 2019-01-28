@@ -27,7 +27,7 @@ public class WhatsminerM3V1ITest
                 4028,
                 4029,
                 new WhatsminerProspector(),
-                new FakeRpcMinerServer(
+                () -> new FakeRpcMinerServer(
                         4028,
                         ImmutableMap.of(
                                 "{\"command\":\"stats\"}",

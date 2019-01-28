@@ -18,7 +18,7 @@ public class DayunZigZ1ITest
                 4028,
                 4029,
                 new DayunProspector(),
-                new FakeRpcMinerServer(
+                () -> new FakeRpcMinerServer(
                         4028,
                         ImmutableMap.of(
                                 "{\"command\":\"stats\"}",

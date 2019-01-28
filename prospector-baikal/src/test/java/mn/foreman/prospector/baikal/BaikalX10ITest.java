@@ -18,7 +18,7 @@ public class BaikalX10ITest
                 4028,
                 4029,
                 new BaikalProspector(),
-                new FakeRpcMinerServer(
+                () -> new FakeRpcMinerServer(
                         4028,
                         ImmutableMap.of(
                                 "{\"command\":\"devs\"}",
