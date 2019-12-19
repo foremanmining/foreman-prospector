@@ -28,6 +28,9 @@ public enum AntminerType
     /** The Antminer DR3. */
     ANTMINER_DR3("Antminer DR3"),
 
+    /** The Antminer DR5. */
+    ANTMINER_DR5("Antminer DR5"),
+
     /** The Antminer E3. */
     ANTMINER_E3("Antminer E3"),
 
