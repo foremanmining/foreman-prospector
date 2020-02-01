@@ -95,9 +95,12 @@ public class AvalonProspector
                         .filter(entry -> entry.getKey().equals("STATS"))
                         .map(Map.Entry::getValue)
                         .flatMap(List::stream)
-                        .filter(map -> map.containsKey("MM ID1"))
+                        .filter(map -> map.containsKey("MM ID0") || map.containsKey("MM ID1"))
                         .findFirst()
                         .orElseThrow(EmptySiteException::new);
-        return AvalonType.forId(stats.get("MM ID1"));
+        return AvalonType.forId(
+                stats.getOrDefault(
+                        "MM ID0",
+                        stats.get("MM ID1")));
     }
 }
