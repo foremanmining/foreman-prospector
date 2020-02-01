@@ -19,11 +19,17 @@ public enum AntminerType
     /** The Antminer B3. */
     ANTMINER_B3("Antminer B3"),
 
+    /** The Antminer B7. */
+    ANTMINER_B7("Antminer B7"),
+
     /** The Antminer D3. */
     ANTMINER_D3("Antminer D3"),
 
     /** The Antminer DR3. */
     ANTMINER_DR3("Antminer DR3"),
+
+    /** The Antminer DR5. */
+    ANTMINER_DR5("Antminer DR5"),
 
     /** The Antminer E3. */
     ANTMINER_E3("Antminer E3"),
@@ -40,17 +46,26 @@ public enum AntminerType
     /** The Antminer S15. */
     ANTMINER_S15("Antminer S15"),
 
+    /** The Antminer S17. */
+    ANTMINER_S17("Antminer S17"),
+
     /** The Antminer T9. */
     ANTMINER_T9("Antminer T9"),
 
     /** The Antminer T15. */
     ANTMINER_T15("Antminer T15"),
 
+    /** The Antminer T17. */
+    ANTMINER_T17("Antminer T17"),
+
     /** The Antminer X3. */
     ANTMINER_X3("Antminer X3"),
 
     /** The Antminer Z9. */
     ANTMINER_Z9("Antminer Z9"),
+
+    /** The Antminer Z11. */
+    ANTMINER_Z11("Antminer Z11"),
 
     /** The BraiinsOS Antminer S9. */
     BRAIINS_S9("braiins-am1-s9", "Antminer S9");
