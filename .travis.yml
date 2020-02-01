@@ -20,9 +20,9 @@ deploy:
   - provider: releases
     api_key: $GITHUB_TOKEN
     file:
-      - "prospectpr-app/target/*.tar.bz2"
-      - "prospectpr-app/target/*.tar.gz"
-      - "prospectpr-app/target/*.zip"
+      - "prospector-app/target/*.tar.bz2"
+      - "prospector-app/target/*.tar.gz"
+      - "prospector-app/target/*.zip"
     file_glob: true
     skip_cleanup: true
     on:
