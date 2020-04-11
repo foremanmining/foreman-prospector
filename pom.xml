@@ -53,6 +53,7 @@
     </properties>
 
     <modules>
+        <module>prospector-aixin</module>
         <module>prospector-antminer</module>
         <module>prospector-avalon</module>
         <module>prospector-app</module>
@@ -71,6 +72,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- Our libraries -->
+            <dependency>
+                <groupId>mn.foreman</groupId>
+                <artifactId>prospector-aixin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>mn.foreman</groupId>
                 <artifactId>prospector-antminer</artifactId>

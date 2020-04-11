@@ -1,5 +1,6 @@
 package mn.foreman.prospector.app;
 
+import mn.foreman.prospector.aixin.AixinProspector;
 import mn.foreman.prospector.antminer.AntminerProspector;
 import mn.foreman.prospector.avalon.AvalonProspector;
 import mn.foreman.prospector.baikal.BaikalProspector;
@@ -70,6 +71,13 @@ public class Main {
                         .addMenuItem(
                                 new Menu.Builder()
                                         .setTitle("Find ASICs")
+                                        .addMenuItem(
+                                                createMinerMenu(
+                                                        "Aixin",
+                                                        new AixinProspector(),
+                                                        4028,
+                                                        scanner,
+                                                        miners))
                                         .addMenuItem(
                                                 createMinerMenu(
                                                         "Antminer",
