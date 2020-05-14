@@ -2,7 +2,7 @@
 
 ## Deprecation ##
 
-This application is no longer being maintained.  The functionality has been merged into [foreman-apps](pickaxe).
+This application is no longer being maintained.  The functionality has been merged into [pickaxe](https://github.com/delawr0190/foreman-apps).
 
 ## Status ##
 
