@@ -1,4 +1,8 @@
-# foreman-prospector
+# DEPRECATED: foreman-prospector
+
+## Deprecation ##
+
+This application is no longer being maintained.  The functionality has been merged into [foreman-apps](pickaxe).
 
 ## Status ##
 
